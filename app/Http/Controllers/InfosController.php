@@ -42,7 +42,7 @@ class InfosController extends Controller
       return view('infos.create',compact('users','info'));
       */
       /*front-end*/
-      return view('info');
+      return view('infos/info');
     }
 
     /**
