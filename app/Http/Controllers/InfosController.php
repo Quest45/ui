@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Info;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class InfosController extends Controller
 {
@@ -62,6 +64,16 @@ class InfosController extends Controller
          'sender_id' => 'required|numeric',
          'info_cover_pic' => 'string'
       ]);
+      if(request('info_cover_pic') != null) {
+        $extension = $info['info_cover_pic']->getClientOriginalExtension();
+        $filename = time().'.'.$extension;
+        $info['info_cover_pic']->move('storage/infos_pictures/',$filename);
+        $info['info_cover_pic'] = 'infos_pictures/'.$filename;
+      }
+      else {
+          $info['info_cover_pic'] = null;
+      }
+      $info->sender_id = Auth::user()->id;
       Info::create($info);
       return redirect()->route('infos.index');
     }
@@ -72,7 +84,7 @@ class InfosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Info $info)
     {   
         /*back-end
         return view('infos.show',compact('info'));
@@ -87,7 +99,7 @@ class InfosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Info $info)
     {
         $users = User::all();
         return view('infos.edit',compact('users','info'));
@@ -100,7 +112,7 @@ class InfosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Info $info)
     {
          $data = request()->validate([
          'type' => 'required',
@@ -111,6 +123,17 @@ class InfosController extends Controller
          'sender_id' => 'required|numeric',
          'info_cover_pic' => 'string'
       ]);
+      
+      if(request('info_cover_pic') != null) {
+        $extension = $data['info_cover_pic']->getClientOriginalExtension();
+        $filename = time().'.'.$extension;
+        $data['info_cover_pic']->move('storage/infos_pictures/',$filename);
+        $data['info_cover_pic'] = 'infos_pictures/'.$filename;
+      }
+      else {
+          $data['info_cover_pic'] = $info->info_cover_pic;
+      }
+      $info->sender_id = Auth::user()->id;
       $info->update($data);
       return redirect('infos/show/'.$info->id);
     }
@@ -121,9 +144,63 @@ class InfosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Info $info)
     {
-        $info->destroy();
+        Storage::delete($info->info_cover_pic);
+        $info->delete();
         return redirect()->route('infos.index');
+    }
+    /**
+     * Get all informations from an university for a faculty
+     * 
+     * @param string $school
+     * @return array
+     */
+    public function getInfosForUniv($school) {
+      $infos = Info::where('receiver_wording',$school)->get();
+      return $infos;
+    }
+
+    /**Public infos */
+    public function getPublicInfosForUniv($school) {
+      $infos = Info::where('receiver_wording',$school)
+      ->where('type','public')
+      ->get();
+      return $infos;
+    }
+
+    /**Private infos */
+    public function getPrivateInfosForUniv($school) {
+      $infos = Info::where('receiver_wording',$school)
+      ->where('type','private')
+      ->get();
+      return $infos;
+    }
+
+    /**
+     * Get all the informations published by a user
+     * The user has all the rights! user can be the school administration or other administration...
+     * 
+     * @param int $id
+     */
+    public function getInfosPublishedByUser($id) {
+      $infos = Info::where('sender_id',$id);
+      return $infos;
+    }
+
+    /**Public infos */
+    public function getPublicInfosPublishedByUser($id) {
+      $infos = Info::where('sender_id',$id)
+      ->where('type','public')
+      ->get();
+      return $infos;
+    }
+
+    /**Private infos */
+    public function getPrivateInfosPublishedByUser($id) {
+      $infos = Info::where('sender_id',$id)
+      ->where('type','private')
+      ->get();
+      return $infos;    
     }
 }

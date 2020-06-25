@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -52,8 +53,15 @@ class UsersController extends Controller
           'card_token' => 'string',
           'ue_token' => 'string'
         ]);
-        $path = request('user_pic_file')->store('pictures','public');
-        $user['user_pic'] = $path;
+        if(request('user_pic_file') != null) {
+          $extension = $user['user_pic_file']->getClientOriginalExtension();
+          $filename = time().'.'.$extension;
+          $user['user_pic_file']->move('storage/users_pictures/',$filename);
+          $user['user_pic'] = 'users_pictures/'.$filename;
+          }
+        else {
+            $user['user_pic'] = null;
+        }
         User::create($user);
         return redirect()->route('users.index');
     }
@@ -64,7 +72,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {     
       /* backend
          return view('users.show',compact('user'));
@@ -79,7 +87,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         return view('users.edit',compact('user'));
     }
@@ -91,7 +99,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user)
     {
          $data = request()->validate([
          'name' => 'required',
@@ -104,13 +112,15 @@ class UsersController extends Controller
          'card_token' => 'string',
          'ue_token' => 'string'
        ]);
-       if(isset($_FILES['user_pic_file']) AND $_FILES['user_pic_file']['error'] == 0 ){
-         $path = request('user_pic_file')->store('pictures','public');
-         $data['user_pic'] = $path;
-      }
-      else{
-         $data['user_pic'] = $user->user_pic;
-      }
+       if(request('user_pic_file') != null) {
+        $extension = $user['user_pic_file']->getClientOriginalExtension();
+        $filename = time().'.'.$extension;
+        $user['user_pic_file']->move('storage/users_pictures/',$filename);
+        $user['user_pic'] = 'users_pictures/'.$filename;
+        }
+       else {
+            $user['user_pic'] = $user->user_pic;
+        }
        $user->update($data);
        return redirect('users/show/'.$user->id);
     }
@@ -121,10 +131,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user->destroy();
-        return redirect()->route('users.index');
+      if($user->user_pic != null) {
+        Storage::delete($user->user_pic);
+      }
+      $user->delete();
+      return redirect()->route('users.index');
     }
 
  }
