@@ -66,7 +66,7 @@
           </div><!-- header-left -->
   
           <div class="header-right">
-            <a href="#" class="header-help-link"><i data-feather="help-circle"></i></a>
+          <a href="/infos/info" class="btn btn-xs btn-white btn-uppercase flex-fill mg-l-10">PUBLIER</a>
             <div class="dropdown dropdown-notification">
               <a href="#" class="dropdown-link new" data-toggle="dropdown"><i data-feather="bell"></i></a>
               <div class="dropdown-menu dropdown-menu-right">
