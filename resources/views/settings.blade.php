@@ -53,11 +53,9 @@
           <hr class="mg-t-30 mg-b-25">
           <ul class="nav nav-sidebar">
           <li class="nav-label"><label class="content-label">SUPPORT</label></li>
-            <li class="nav-item"><a href="/" class="nav-link"><i data-feather="aperture"></i> Aide</a></li>
-            <li class="nav-item"><a href="/" class="nav-link"><i data-feather="message-square"></i> Feedback</a></li>
+            <li class="nav-item"><a href="#" class="nav-link"><i data-feather="aperture"></i> Aide</a></li>
+            <li class="nav-item"><a href="#" class="nav-link"><i data-feather="message-square"></i> Feedback</a></li>
           </ul>
-  
-  
         </div><!-- sidebar-body -->
     </div><!-- sidebar -->
 

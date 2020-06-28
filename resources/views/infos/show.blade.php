@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
   </head>
   <body>
-  <div class="sidebar">
+    <div class="sidebar">
         <div class="sidebar-header">
           <div>
             <a href="/" class="sidebar-logo"><span>UNIVINFO</span></a>
@@ -48,11 +48,9 @@
           <hr class="mg-t-30 mg-b-25">
           <ul class="nav nav-sidebar">
           <li class="nav-label"><label class="content-label">SUPPORT</label></li>
-            <li class="nav-item"><a href="themes.html" class="nav-link"><i data-feather="aperture"></i> Aide</a></li>
-            <li class="nav-item"><a href="http://themepixels.me/cassie/docs.html" class="nav-link"><i data-feather="message-square"></i> Feedback</a></li>
+            <li class="nav-item"><a href="#" class="nav-link"><i data-feather="aperture"></i> Aide</a></li>
+            <li class="nav-item"><a href="#" class="nav-link"><i data-feather="message-square"></i> Feedback</a></li>
           </ul>
-  
-  
         </div><!-- sidebar-body -->
     </div><!-- sidebar -->
 
