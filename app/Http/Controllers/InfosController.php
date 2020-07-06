@@ -61,7 +61,6 @@ class InfosController extends Controller
     public function store(Request $request)
     {
         $info = request()->validate([
-         'type' => 'required',
          'title' => 'required',
          'tags' => 'required',
          'info_content' => 'required',
@@ -116,7 +115,6 @@ class InfosController extends Controller
     public function update(Info $info)
     {
          $data = request()->validate([
-         'type' => 'required',
          'title' => 'required',
          'tags' => 'required',
          'info_content' => 'required',
@@ -157,24 +155,13 @@ class InfosController extends Controller
      * @param string $school
      * @return array
      */
-    public function getInfosForUniv($school) {
+    public function getPrivateInfosForUniv($school) {
       $infos = Info::where('receiver_wording',$school)->get();
       return $infos;
     }
 
-    /**Public infos */
-    public function getPublicInfosForUniv($school) {
-      $infos = Info::where('receiver_wording',$school)
-      ->where('type','public')
-      ->get();
-      return $infos;
-    }
-
-    /**Private infos */
-    public function getPrivateInfosForUniv($school) {
-      $infos = Info::where('receiver_wording',$school)
-      ->where('type','private')
-      ->get();
+    public function getPublicInfosForUniv() {
+      $infos = Info::where('receiver_wording',null)->get();
       return $infos;
     }
 
@@ -192,15 +179,19 @@ class InfosController extends Controller
     /**Public infos */
     public function getPublicInfosPublishedByUser($id) {
       $infos = Info::where('sender_id',$id)
-      ->where('type','public')
+      ->where('receiver_wording',null)
       ->get();
       return $infos;
     }
 
-    /**Private infos */
-    public function getPrivateInfosPublishedByUser($id) {
+    /**Private infos
+     * @param int $id //sender id
+     * @param string $school
+     * @return arra
+     */
+    public function getPrivateInfosPublishedByUser($id,$school) {
       $infos = Info::where('sender_id',$id)
-      ->where('type','private')
+      ->where('receiver_wording',$school)
       ->get();
       return $infos;    
     }
