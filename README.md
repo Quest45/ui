@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.ibb.co/mqZ0DZk/logo-iphone-icon-mf4.png" alt="logo_UNIVINFO" width="200"></p><br>
+<p align="center"><img src="https://i.ibb.co/tm27c7S/repository-open-graph-template.png" alt="logo_UNIVINFO" width="100%"></p><br>
 
 
 ## About UNIVINFO
