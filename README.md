@@ -1,24 +1,23 @@
 <p align="center"><img src="https://i.ibb.co/tm27c7S/repository-open-graph-template.png" alt="logo_UNIVINFO" width="100%"></p><br>
 
 
-## About UNIVINFO
+## À propos d'UNIVINFO
 
-UNIVINFO is a web and mobile application for efficient information management in universities. It has six main features, namely:
+UNIVINFO est une application web et mobile pour une gestion efficace de l'information au sein les universités. Il présente six caractéristiques principales, à savoir:
 
-- Publication of informations
-- Planning management.
-- Restaurant menu.
-- Jobs & Internships.
-- Interactive Map.
-- Roll of honor.
-- Job and internship
+- La publication des informations
+- La gestion du planning des cours & examens (via un calendrier)
+- Les Partenariats Restaurant & bon plans
+- La carte interactive
+- Tableau d'honneur
+- Emplois & Stages
 
-UNIVINFO is accessible, powerful and provides the information management tools required for large universities.
+UNIVINFO est un outil accessible, puissant qui fournit les outils de gestion de l'information nécessaires aux grandes universités, afin que celles-ci puissent se concentrer su ce quelle savent faire le mieux.
 
 ## License
 
-Each UNIVINFO source file included in this distribution is licensed under the GNU GPLv3. For the Software License, please see the following address for the full text of the [GNU GPLv3 license](https://github.com/shogunMP7/univInfo/blob/master/LICENSE) or contact bonsoa.yen@outlook.com for a copy.
+Chaque fichier source UNIVINFO inclus dans cette distribution est sous licence GNU GPLv3. Pour la licence du logiciel, veuillez consulter l'adresse suivante pour le texte complet de la licence GNU GPLv3 ou contacter bonsoa.yen@outlook.com pour une copie.
 
-## Security Vulnerabilities
+## Vulnérabilités de sécurité
 
-If you discover a security vulnerability within UNIVINFO, please send an e-mail to Ayen Bonsoa via [bonsoa.yen@outlook.com](mailto:bonsoa.yen@outlook.com). All security vulnerabilities will be promptly addressed.
+Si vous découvrez une vulnérabilité de sécurité au sein d'UNIVINFO, veuillez envoyer un e-mail à Ayen Bonsoa via bonsoa.yen@outlook.com. Toutes les vulnérabilités de sécurité seront rapidement corrigées.
