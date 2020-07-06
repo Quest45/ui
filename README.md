@@ -5,7 +5,7 @@
 
 UNIVINFO est une application qui fournit un systeme de gestion efficiente de l'information au sein les universités, via une interface web, mobile et desktop. Il se distingue à travers ses six principales fonctionalités à savoir:
 
-- La publication des informations, une liste des toutes les publications de l'université consutables et téléchargeables.
+- La publication des informations, une liste des toutes les publications de l'université consultables et téléchargeables.
 - La gestion du planning des cours & examens (via un calendrier)
 - La carte interactive, renseignant les principaux batiments de l'université
 - Le Tableau d'honneur, un prix de distinction pour des étudiants les plus méritants
