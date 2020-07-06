@@ -43486,20 +43486,3 @@ a.bg-twitter:hover, a.bg-twitter:focus, button.bg-twitter:hover, button.bg-twitt
 .wd-280 {
   width: 280px;
 }
-
-.welcome-illustration-signin, .welcome-illustration-signup{
-  float:left;
-  width:calc(100% - 400px);
-  background-image:url('../img/go-to-school-illustration-min.png');
-  background-size:cover;
-  background-position:center;
-  height:100vh;
-}
-
-.welcome-illustration-signup{
-  width:calc(100% - 45%);
-}
-
-#myEditor{
-  height: 82vh;
-}

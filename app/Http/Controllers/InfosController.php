@@ -20,15 +20,21 @@ class InfosController extends Controller
      * Comment or uncomment a section as desired, 
      * to display the corresponding view.
      */
+
+      /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     { 
-      /* all informations */
-      /*back-end
       $infos = Info::all();
       return view('infos.index',compact('infos'));
-      */
-      /*front-end*/
-      return view('infos');
     }
 
     /**
@@ -40,11 +46,10 @@ class InfosController extends Controller
     { 
       /*back-end
       $users = User::all();
-      $info = new Info();
-      return view('infos.create',compact('users','info'));
+     
       */
       /*front-end*/
-      return view('infos/info');
+      return view('infos.create');
     }
 
     /**
@@ -85,14 +90,10 @@ class InfosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Info $info)
-    {   
-        /*back-end
-        return view('infos.show',compact('info'));
-        */
-        /*front-end*/
-         return view('/infos/show');
+    {     
+      return view('info.show',compact('info'));
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

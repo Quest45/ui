@@ -13,14 +13,12 @@ class UsersController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+  */
+
     public function index()
     {   
         $users = User::all();
         return view ('users.index',compact('users'));
-    
-        /* Front-end
-        return view('confirm')*/
     }
 
     /**
@@ -28,10 +26,10 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $user = new User();
-        return view('users.create',compact('user'));
+      $user = new User();
+      return view('users.create',compact('user'));
     }
 
     /**
@@ -42,28 +40,28 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $user = request()->validate([
-          'name' => 'required',
-          'email' => 'required|email',
-          'password' => 'required',
-          'role' => 'required',
-          'phone' => 'required',
-          'user_pic_file' => 'mimes:jpg,jpeg,png',
-          'user_faculty' => 'string',
-          'card_token' => 'string',
-          'ue_token' => 'string'
-        ]);
-        if(request('user_pic_file') != null) {
-          $extension = $user['user_pic_file']->getClientOriginalExtension();
-          $filename = time().'.'.$extension;
-          $user['user_pic_file']->move('storage/users_pictures/',$filename);
-          $user['user_pic'] = 'users_pictures/'.$filename;
-          }
-        else {
-            $user['user_pic'] = null;
+      $user = request()->validate([
+        'university' => 'required',
+        'name' => 'required',
+        'email' => 'required|email',
+        'password' => 'required',
+        'phone' => 'required',
+        'user_pic_file' => 'mimes:jpg,jpeg,png',
+        'user_faculty' => 'string',
+        'card_token' => 'string',
+        'language' => 'string'
+      ]);
+      if(request('user_pic_file') != null) {
+        $extension = $user['user_pic_file']->getClientOriginalExtension();
+        $filename = time().'.'.$extension;
+        $user['user_pic_file']->move('storage/users_pictures/',$filename);
+        $user['user_pic'] = 'users_pictures/'.$filename;
         }
-        User::create($user);
-        return redirect()->route('users.index');
+      else {
+          $user['user_pic'] = null;
+      }
+      User::create($user);
+      return redirect()->route('users.index');
     }
 
     /**
@@ -74,11 +72,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {     
-      /* backend
-         return view('users.show',compact('user'));
-        */
-        /*frond-end*/
-        return view ('users/show');
+      return view('users.show',compact('user'));
     }
 
     /**
@@ -109,8 +103,7 @@ class UsersController extends Controller
          'phone' => 'required',
          'user_pic_file' => 'mimes:jpg,jpeg,png',//fichier immage
          'user_faculty' => 'string',
-         'card_token' => 'string',
-         'ue_token' => 'string'
+         'card_token' => 'string'
        ]);
        if(request('user_pic_file') != null) {
         $extension = $user['user_pic_file']->getClientOriginalExtension();

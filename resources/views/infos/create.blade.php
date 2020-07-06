@@ -19,7 +19,6 @@
     <!-- vendor css -->
     <link rel="stylesheet" href="{{ asset('css/vendor/fortawesome/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/ionicons/css/ionicons.min.css') }}">
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
     <!-- template css -->
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">

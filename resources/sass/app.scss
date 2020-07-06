@@ -1,1 +1,72 @@
-//
+/* ==================================================================================== */
+
+/** info page ***/
+
+ #myEditor{
+    height: 82vh;
+  }
+
+/*** end register page stylesheet ***/
+
+/* ==================================================================================== */
+
+/** register page ***/
+
+#university_name{
+    margin-bottom:10px;
+}
+
+/*** end register page stylesheet ***/
+
+/* ==================================================================================== */
+
+/** welcome page ***/
+.welcome-illustration-signin, .welcome-illustration-signup{
+    float:left;
+    width:calc(100% - 400px);
+    background-image:url('/img/go-to-school-illustration-min.png');
+    background-size:cover;
+    background-position:center;
+    height:100vh;
+}
+  
+.welcome-illustration-signup{
+    width:calc(100% - 45%);
+}
+
+.welcome_hero{
+    height:100vh;
+    width:100%;
+    float:right;
+    position: relative;
+    background-image:url('/img/bg-transparent.png');
+    background-size:cover;
+    background-position:center;
+}
+
+.welcome_hero_content{
+    position:absolute;
+    left:50%;top:50%;
+    transform:translate(-50%, -50%);
+    height: auto; width:80%;
+}
+
+
+//media queries
+
+@media (min-width: 768px) {
+   
+    .welcome_hero{
+        height:100vh;
+        width:50%;
+        float:right;
+        position: relative;
+    }
+    .welcome_hero_content{
+        width:70%;
+    }
+}
+
+/*** end welcome page stylesheet ***/
+
+/* ==================================================================================== */

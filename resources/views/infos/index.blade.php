@@ -129,7 +129,10 @@
                 <div class="dropdown-menu-body">
                   <a href="/users/1" class="dropdown-item"><i data-feather="user"></i> Profile</a>
                   <a href="/settings" class="dropdown-item"><i data-feather="briefcase"></i> Paramètres</a>
-                  <a href="/logout" class="dropdown-item"><i data-feather="log-out"></i> Déconnexion</a>
+                  <form action="{{ route('logout') }}" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="dropdown-item"><i data-feather="log-out"></i> Déconnexion</button>
+                </form>
                 </div>
               </div><!-- dropdown-menu -->
             </div>

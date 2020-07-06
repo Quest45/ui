@@ -7,8 +7,6 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -31,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::LOGIN;
+    protected $redirectTo = RouteServiceProvider::INFOS;
 
     /**
      * Create a new controller instance.
@@ -43,17 +41,6 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-
-       /**
-     * Show the application registration form.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function showRegistrationForm()
-    {
-        return view('signup');
-    }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -61,39 +48,15 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    { 
+    {
         return Validator::make($data, [
+            'university' => ['string'],
             'name' => ['required', 'string', 'max:255'],
-            'university' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function register(Request $request)
-    {
-        
-        $this->validator($request->all())->validate();
-        
-        event(new Registered($user = $this->create($request->all())));
-
-       // $this->guard()->login($user);
-      
-        if ($response = $this->registered($request, $user)) {
-            return $response;
-        }
-
-        return $request->wantsJson()
-                    ? new Response('', 201)
-                    : redirect($this->redirectPath());
-    }
-    
     /**
      * Create a new user instance after a valid registration.
      *
@@ -103,22 +66,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'university' => $data['university'],
             'name' => $data['name'],
             'email' => $data['email'],
-            'university'=>$data['university'],
             'password' => Hash::make($data['password']),
         ]);
     }
-
-      /**
-     * The user has been registered.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return mixed
-     */
-    protected function registered(Request $request, $user)
-    {
-        //
-    }   
 }
