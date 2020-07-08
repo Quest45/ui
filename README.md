@@ -10,7 +10,7 @@ UNIVINFO est une application qui fournit un systeme de gestion efficiente de l'i
 - La carte interactive, renseignant les principaux batiments de l'université
 - Le Tableau d'honneur, un prix de distinction pour des étudiants les plus méritants
 - Les Emplois & Stages, pour la mise en relation des etudiants avec les entreprises
-- Une liste de tous nos partenaires, proposant une réduction du cout de leur services pour les etudiants.
+- Une liste de tous nos partenaires, proposant une réduction du coût de leur services pour les etudiants.
 
 UNIVINFO est un outil accessible, puissant qui fournit les outils de gestion nécessaires aux grandes universités, afin que celles-ci puissent se concentrer sur ce quelle savent faire le mieux.
 
