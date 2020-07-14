@@ -33,7 +33,7 @@ class InfosController extends Controller
     
     public function index()
     { 
-      $infos = Info::all();
+      $infos = Info::paginate(2);
       return view('infos.index',compact('infos'));
     }
 
@@ -61,23 +61,23 @@ class InfosController extends Controller
     public function store(Request $request)
     {
         $info = request()->validate([
-         'title' => 'required',
-         'tags' => 'required',
-         'info_content' => 'required',
-         'receiver_wording' => 'required|numeric',
-         'sender_id' => 'required|numeric',
-         'info_cover_pic' => 'string'
+         'title' => 'required|string',
+         'tags' => 'required|string',
+         'info_content' => 'required|string',
+         'receiver_wording' => 'required|string',
+         'cover' => 'nullable|image',
       ]);
-      if(request('info_cover_pic') != null) {
-        $extension = $info['info_cover_pic']->getClientOriginalExtension();
+      if(request('cover') != null) {
+        $extension = $info['cover']->getClientOriginalExtension();
         $filename = time().'.'.$extension;
-        $info['info_cover_pic']->move('storage/infos_pictures/',$filename);
+        $info['cover']->move('storage/infos_pictures/',$filename);
         $info['info_cover_pic'] = 'infos_pictures/'.$filename;
       }
       else {
           $info['info_cover_pic'] = null;
       }
-      $info->sender_id = Auth::user()->id;
+      $info['sender_id'] = Auth::user()->id;
+
       Info::create($info);
       return redirect()->route('infos.index');
     }

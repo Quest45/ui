@@ -140,14 +140,36 @@
         
         <div class="pd-20 content-body">
             <!-- Create the editor container -->
-            <form action="/">
-              <textarea id="myEditor">
+            <!--@modif-->
+            <form action="{{route('infos.store')}}" method="post" enctype="multipart/form-data">
+              @csrf
+              <label>Info title</label>
+              <input name="title" type="text"/><br>
+
+              
+              <label>Info keyword</label>
+              <input name="tags" type="text"/><br>
+
+              
+              <label>Faculty or School destination</label>
+              <select id="university" name="receiver_wording">
+                  <option value="UCAO">UCAO</option>
+                  <option value="ESGIS">ESGIS</option>
+                  <option value="FORMATEC">FORMATEC</option>
+                  <option value="IAI">IAI</option>
+              </select><br/>
+
+              <input name="cover" type="file"/><br>
+
+              <label>Edit your information content</label><br>
+              <textarea id="myEditor" name="info_content" cols="40" rows="10">
                 Bienvenue !
               </textarea>
               <div style="float:right;" class="form-group d-flex mg-t-15 mg-b-0">
                 <button type="submit" class="btn btn-brand-01 btn-uppercase flex-fill"><i data-feather="save"></i> ENREGISTRER</button>
               </div>
             </form>
+            <!--@modif-->
         </div><!-- content-body -->
       </div><!-- content -->
       <script src=" {{ asset('js/jquery/jquery.min.js') }} "></script>
