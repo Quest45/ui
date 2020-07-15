@@ -1,7 +1,7 @@
 <p align="center"><img src="https://i.ibb.co/tm27c7S/repository-open-graph-template.png" alt="logo_UNIVINFO" width="100%"></p><br>
 
 
-## À propos d'UNIVINFO
+## UNIVINFO 1.0
 
 UNIVINFO est une application qui fournit un systeme de gestion efficiente de l'information au sein des universités, via une interface web, mobile et desktop. Il se distingue à travers ses six principales fonctionalités à savoir:
 
