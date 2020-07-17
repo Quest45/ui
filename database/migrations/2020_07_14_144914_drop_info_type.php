@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangePhoneColumn extends Migration
+class DropInfoType extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class ChangePhoneColumn extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('phone')->nullable()->change();
+        //
+        Schema::table('infos', function(Blueprint $table) {
+            $table->dropColumn("type");
         });
     }
 

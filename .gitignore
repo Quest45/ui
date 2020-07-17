@@ -3,7 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
+/database/migrations/2020_07_13_180624_create_sessions_table.php
 .env.backup
 .phpunit.result.cache
 Homestead.json
