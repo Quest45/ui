@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email',100)->unique();
-            $table->string('langage')->default('Francais');
+            $table->string('langage')->default('fr_FR');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('university');
