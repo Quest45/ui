@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropInfoType extends Migration
+class AddUserRoleField extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class DropInfoType extends Migration
     public function up()
     {
         //
-        Schema::table('infos', function(Blueprint $table) {
-            $table->dropColumn("type");
+        Schema::table('users', function(Blueprint $table) {
+            $table->string('role');
         });
     }
 
