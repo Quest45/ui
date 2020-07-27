@@ -16,7 +16,6 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::truncate();
-        DB::table('role_user')->truncate();
 
         $admin = User::create([
             'university' => 'UCAO',
@@ -35,6 +34,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $corporate = User::create([
+            'university' => 'null',
             'name' => 'corporate',
             'email' => 'corporate@corporate.com',
             'password' => Hash::make('password'),
