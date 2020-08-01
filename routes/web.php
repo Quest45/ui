@@ -18,7 +18,8 @@ Route::view('/', 'welcome');
 
 //authentications routes
 Auth::routes();
-
+// Route for the account confirmation
+Route::get('/confirm/{id}/{token}' , 'Auth\RegisterController@confirm');
 //users
 Route::resource('/users', 'UsersController');
 Route::view('/settings', 'users/settings');

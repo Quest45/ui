@@ -9,6 +9,20 @@
       <a href="dashboard-one.html" class="sidebar-logo mg-b-40"><span>UNIVINFO</span></a>
       <h4 class="signin-title">De retour !</h4>
       <h5 class="signin-subtitle">Connecter vous pour continuer.</h5>
+      @if(session('success'))
+              <div class="container">
+                  <div class="alert alert-success">
+                      {{ session('success') }}
+                  </div>
+              </div>
+      @endif
+      @if(session('error'))
+              <div class="container">
+                  <div class="alert alert-danger">
+                      {{ session('error') }}
+                  </div>
+              </div>
+      @endif
       <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="signin-form">

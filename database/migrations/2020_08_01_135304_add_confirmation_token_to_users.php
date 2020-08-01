@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropUsersRolesTable extends Migration
+class AddConfirmationTokenToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class DropUsersRolesTable extends Migration
      */
     public function up()
     {
-        Schema::drop('role_user');
+        Schema::table('users', function (Blueprint $table) {
+             $table->string('confirmation_token')->nullable();
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class DropUsersRolesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

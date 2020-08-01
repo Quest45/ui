@@ -140,6 +140,13 @@
         </div><!-- header -->
         
         <div class="pd-20 content-body">
+          @if(session('success'))
+              <div class="container">
+                  <div class="alert alert-success">
+                      {{ session('success') }}
+                  </div>
+              </div>
+            @endif
           <div class="card-columns ">
         @foreach($infos as $info)
           
